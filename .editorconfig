@@ -8,7 +8,12 @@ charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
+
+[*.{ts,tsx,js,jsx}]
 quote_type = single
 
-[*.{py,java,json}]
+[*.{py,java}]
 indent_size = 4
+
+[Makefile]
+indent_style = tab
