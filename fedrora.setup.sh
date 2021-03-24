@@ -4,13 +4,6 @@
 # Sure it's grand...yolo?
 #
 
-
-# Install and set ZSH as default shell. Normally the chsh utility is used to
-# do this, but it's not installed by default on Fedora. Also, some internet
-# strangers say chsh has dodgy permissions or something to that effect.
-sudo dnf install zsh -y
-echo '[ ! -z "$PS1" ] && exec /usr/bin/zsh' >> ~/.bashrc
-
 # Set Fedora to use the default dark theme
 gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 gsettings set org.gnome.desktop.wm.preferences theme "Adwaita-dark"
@@ -37,6 +30,7 @@ sudo dnf install code -y
 
 # Installs NVM (Node.js Version Manager) and latest LTS release of Node.js
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+source ~/.bashrc
 nvm install --lts
 
 # Brave browser
@@ -45,7 +39,20 @@ sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.co
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 sudo dnf install brave-browser -y
 
+# Install and set ZSH as default shell. Normally the chsh utility is used to
+# do this, but it's not installed by default on Fedora. Also, some internet
+# strangers say chsh has dodgy permissions or something to that effect.
+sudo dnf install zsh -y
+echo '[ ! -z "$PS1" ] && exec /usr/bin/zsh' >> ~/.bashrc
+
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-echo "All done! Hopefully it worked •ᴗ•"
+curl https://raw.githubusercontent.com/evanshortiss/dotfiles/master/.gitconfig > ~/.gitconfig
+curl https://raw.githubusercontent.com/evanshortiss/dotfiles/master/.editorconfig > ~/.editorconfig
+curl https://raw.githubusercontent.com/evanshortiss/dotfiles/master/.zshrc > ~/.zshrc
+curl https://raw.githubusercontent.com/evanshortiss/dotfiles/master/.gitignore > ~/.gitignore
+curl https://raw.githubusercontent.com/evanshortiss/dotfiles/master/.npmrc > ~/.npmrc
+
+echo "All done! Close this terminal session and start a new one."
+echo "Hopefully everything worked out •ᴗ•"
