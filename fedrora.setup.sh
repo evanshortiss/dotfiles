@@ -48,11 +48,17 @@ echo '[ ! -z "$PS1" ] && exec /usr/bin/zsh' >> ~/.bashrc
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+# Download various dotfiles from this repo into the homedir on the Fedora machine
 curl https://raw.githubusercontent.com/evanshortiss/dotfiles/master/.gitconfig > ~/.gitconfig
 curl https://raw.githubusercontent.com/evanshortiss/dotfiles/master/.editorconfig > ~/.editorconfig
 curl https://raw.githubusercontent.com/evanshortiss/dotfiles/master/.zshrc > ~/.zshrc
 curl https://raw.githubusercontent.com/evanshortiss/dotfiles/master/.gitignore > ~/.gitignore
 curl https://raw.githubusercontent.com/evanshortiss/dotfiles/master/.npmrc > ~/.npmrc
+
+# Super important. Install Spotify for some "choons". I'm not sure what the best
+# way to go about installing it is. RPMs seem hit and miss but this does the trick
+sudo flatpak install -y --from https://flathub.org/repo/appstream/com.spotify.Client.flatpakref
+sudo dnf install -y flatpak
 
 echo "All done! Close this terminal session and start a new one."
 echo "Hopefully everything worked out •ᴗ•"
